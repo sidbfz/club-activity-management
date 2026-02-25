@@ -55,12 +55,12 @@ import {
 } from "@/components/ui/select";
 
 const categoryColors: Record<string, string> = {
-    Technology: "bg-violet-500/10 text-violet-400 border-violet-500/20",
-    Design: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-    Environment: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    Music: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-    Sports: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-    Literature: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    Technology: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20",
+    Design: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/30 dark:border-pink-500/20",
+    Environment: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20",
+    Music: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20",
+    Sports: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30 dark:border-sky-500/20",
+    Literature: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30 dark:border-purple-500/20",
     Photography: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
 };
 
@@ -202,8 +202,8 @@ export default function ClubDetailPage() {
                 <div className="fixed top-20 right-6 z-50 animate-fade-in-up">
                     <div
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg backdrop-blur-xl ${toast.type === "success"
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                            : "bg-sky-500/10 border-sky-500/30 text-sky-400"
+                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+                            : "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400"
                             }`}
                     >
                         <CheckCircle2 className="h-4 w-4 shrink-0" />
@@ -399,14 +399,14 @@ export default function ClubDetailPage() {
             <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                 <CardContent className="p-5">
                     <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
-                        <Building2 className="h-4 w-4 text-violet-400" />
+                        <Building2 className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                         Club Information
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {club.meetingDay && (
                             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">
                                 <div className="rounded-lg bg-violet-500/10 p-2 mt-0.5">
-                                    <CalendarDays className="h-4 w-4 text-violet-400" />
+                                    <CalendarDays className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                                 </div>
                                 <div>
                                     <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Meeting Schedule</p>
@@ -418,7 +418,7 @@ export default function ClubDetailPage() {
                         {club.location && (
                             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">
                                 <div className="rounded-lg bg-emerald-500/10 p-2 mt-0.5">
-                                    <MapPin className="h-4 w-4 text-emerald-400" />
+                                    <MapPin className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                                 </div>
                                 <div>
                                     <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Location</p>
@@ -429,7 +429,7 @@ export default function ClubDetailPage() {
                         {club.contactEmail && (
                             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">
                                 <div className="rounded-lg bg-amber-500/10 p-2 mt-0.5">
-                                    <Mail className="h-4 w-4 text-amber-400" />
+                                    <Mail className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                                 </div>
                                 <div>
                                     <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Contact</p>
@@ -440,7 +440,7 @@ export default function ClubDetailPage() {
                         {club.foundedDate && (
                             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">
                                 <div className="rounded-lg bg-sky-500/10 p-2 mt-0.5">
-                                    <Clock className="h-4 w-4 text-sky-400" />
+                                    <Clock className="h-4 w-4 text-sky-600 dark:text-sky-400" />
                                 </div>
                                 <div>
                                     <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Founded</p>
@@ -456,11 +456,11 @@ export default function ClubDetailPage() {
                         {club.website && (
                             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">
                                 <div className="rounded-lg bg-pink-500/10 p-2 mt-0.5">
-                                    <Globe className="h-4 w-4 text-pink-400" />
+                                    <Globe className="h-4 w-4 text-pink-600 dark:text-pink-400" />
                                 </div>
                                 <div>
                                     <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Website</p>
-                                    <a href={club.website} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-violet-400 hover:underline">
+                                    <a href={club.website} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-violet-600 dark:text-violet-400 hover:underline">
                                         {club.website.replace("https://", "")}
                                     </a>
                                 </div>
@@ -475,7 +475,7 @@ export default function ClubDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-violet-500/10 p-2.5">
-                            <Users className="h-5 w-5 text-violet-400" />
+                            <Users className="h-5 w-5 text-violet-600 dark:text-violet-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{members.length}</p>
@@ -486,7 +486,7 @@ export default function ClubDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-emerald-500/10 p-2.5">
-                            <CalendarDays className="h-5 w-5 text-emerald-400" />
+                            <CalendarDays className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{events.length}</p>
@@ -499,7 +499,7 @@ export default function ClubDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-amber-500/10 p-2.5">
-                            <Sparkles className="h-5 w-5 text-amber-400" />
+                            <Sparkles className="h-5 w-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{adminMembers}</p>
@@ -510,7 +510,7 @@ export default function ClubDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-sky-500/10 p-2.5">
-                            <TrendingUp className="h-5 w-5 text-sky-400" />
+                            <TrendingUp className="h-5 w-5 text-sky-600 dark:text-sky-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">₹{(totalBudgetApproved / 1000).toFixed(0)}K</p>
@@ -583,7 +583,7 @@ export default function ClubDetailPage() {
                                                     }}
                                                 >
                                                     <SelectTrigger className="h-7 text-[10px] w-[120px] bg-muted/20 border-border/40">
-                                                        <Shield className="h-3 w-3 mr-1 text-violet-400" />
+                                                        <Shield className="h-3 w-3 mr-1 text-violet-600 dark:text-violet-400" />
                                                         <SelectValue />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -601,7 +601,7 @@ export default function ClubDetailPage() {
                                                 <Badge
                                                     variant="outline"
                                                     className={`text-[10px] ${m.role?.roleType === "admin"
-                                                        ? "bg-violet-500/10 text-violet-400 border-violet-500/20"
+                                                        ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20"
                                                         : ""
                                                         }`}
                                                 >
@@ -612,7 +612,7 @@ export default function ClubDetailPage() {
                                                 <Button
                                                     size="sm"
                                                     variant="ghost"
-                                                    className="h-6 w-6 p-0 text-muted-foreground hover:text-red-400"
+                                                    className="h-6 w-6 p-0 text-muted-foreground hover:text-red-600 dark:text-red-400"
                                                     onClick={() => handleRemoveMember(m.membershipId, m.student?.name)}
                                                 >
                                                     <UserMinus className="h-3 w-3" />
@@ -735,7 +735,7 @@ export default function ClubDetailPage() {
                                         <CardContent className="p-5 space-y-3">
                                             <div className="flex items-start justify-between">
                                                 <div className="space-y-1 flex-1 min-w-0">
-                                                    <h3 className="font-semibold text-sm group-hover:text-violet-400 transition-colors truncate">
+                                                    <h3 className="font-semibold text-sm group-hover:text-violet-600 dark:text-violet-400 transition-colors truncate">
                                                         {e.eventName}
                                                     </h3>
                                                     <p className="text-xs text-muted-foreground line-clamp-1">
@@ -745,9 +745,9 @@ export default function ClubDetailPage() {
                                                 <Badge
                                                     variant="outline"
                                                     className={`text-[10px] capitalize shrink-0 ml-2 ${e.status === "upcoming"
-                                                        ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                                                        ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20"
                                                         : e.status === "ongoing"
-                                                            ? "bg-amber-500/10 text-amber-400 border-amber-500/20"
+                                                            ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20"
                                                             : "bg-muted text-muted-foreground"
                                                         }`}
                                                 >
@@ -756,15 +756,15 @@ export default function ClubDetailPage() {
                                             </div>
                                             <div className="flex items-center gap-4 text-xs text-muted-foreground">
                                                 <span className="flex items-center gap-1">
-                                                    <CalendarDays className="h-3 w-3 text-violet-400" />
+                                                    <CalendarDays className="h-3 w-3 text-violet-600 dark:text-violet-400" />
                                                     {new Date(e.eventDate).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
                                                 </span>
                                                 <span className="flex items-center gap-1">
-                                                    <Clock className="h-3 w-3 text-violet-400" />
+                                                    <Clock className="h-3 w-3 text-violet-600 dark:text-violet-400" />
                                                     {new Date(e.eventDate).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
                                                 </span>
                                                 <span className="flex items-center gap-1">
-                                                    <MapPin className="h-3 w-3 text-violet-400" />
+                                                    <MapPin className="h-3 w-3 text-violet-600 dark:text-violet-400" />
                                                     {e.venue}
                                                 </span>
                                             </div>
@@ -780,7 +780,7 @@ export default function ClubDetailPage() {
                                                 <Progress value={fillPercent} className="h-1.5 bg-muted/50" />
                                             </div>
                                             {isRegistered && (
-                                                <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[10px]">
+                                                <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20 text-[10px]">
                                                     <CheckCircle2 className="h-3 w-3 mr-1" /> Registered
                                                 </Badge>
                                             )}
@@ -810,19 +810,19 @@ export default function ClubDetailPage() {
                         <div className="grid grid-cols-3 gap-3">
                             <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
                                 <p className="text-[11px] text-muted-foreground">Approved</p>
-                                <p className="text-lg font-bold text-emerald-400">
+                                <p className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                                     ₹{totalBudgetApproved.toLocaleString()}
                                 </p>
                             </div>
                             <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
                                 <p className="text-[11px] text-muted-foreground">Pending</p>
-                                <p className="text-lg font-bold text-amber-400">
+                                <p className="text-lg font-bold text-amber-600 dark:text-amber-400">
                                     ₹{budgets.filter((b) => b.status === "pending").reduce((s, b) => s + b.amount, 0).toLocaleString()}
                                 </p>
                             </div>
                             <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/10">
                                 <p className="text-[11px] text-muted-foreground">Rejected</p>
-                                <p className="text-lg font-bold text-red-400">
+                                <p className="text-lg font-bold text-red-600 dark:text-red-400">
                                     ₹{budgets.filter((b) => b.status === "rejected").reduce((s, b) => s + b.amount, 0).toLocaleString()}
                                 </p>
                             </div>
@@ -836,7 +836,7 @@ export default function ClubDetailPage() {
                                     className="flex items-center gap-3 p-4 rounded-lg bg-muted/20 hover:bg-muted/40 transition-colors"
                                 >
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-500/10">
-                                        <Wallet className="h-5 w-5 text-amber-400" />
+                                        <Wallet className="h-5 w-5 text-amber-600 dark:text-amber-400" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <p className="text-sm font-medium">{b.description}</p>
@@ -849,10 +849,10 @@ export default function ClubDetailPage() {
                                         <Badge
                                             variant="outline"
                                             className={`text-[10px] ${b.status === "approved"
-                                                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20"
                                                 : b.status === "pending"
-                                                    ? "bg-amber-500/10 text-amber-400 border-amber-500/20"
-                                                    : "bg-red-500/10 text-red-400 border-red-500/20"
+                                                    ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20"
+                                                    : "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30 dark:border-red-500/20"
                                                 }`}
                                         >
                                             {b.status}

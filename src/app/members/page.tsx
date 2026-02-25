@@ -52,7 +52,7 @@ export default function MembersPage() {
                 <Card className="max-w-md border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-8 text-center space-y-4">
                         <div className="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-red-600/20 to-rose-600/20 flex items-center justify-center">
-                            <Lock className="h-8 w-8 text-red-400" />
+                            <Lock className="h-8 w-8 text-red-600 dark:text-red-400" />
                         </div>
                         <h2 className="text-xl font-bold">Access Restricted</h2>
                         <p className="text-sm text-muted-foreground">
@@ -128,7 +128,7 @@ export default function MembersPage() {
                 <Card className="border-border/40 bg-card/50">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-violet-500/10 p-2.5">
-                            <Users className="h-5 w-5 text-violet-400" />
+                            <Users className="h-5 w-5 text-violet-600 dark:text-violet-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{store.memberships.length}</p>
@@ -141,7 +141,7 @@ export default function MembersPage() {
                 <Card className="border-border/40 bg-card/50">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-amber-500/10 p-2.5">
-                            <Shield className="h-5 w-5 text-amber-400" />
+                            <Shield className="h-5 w-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{adminCount}</p>
@@ -152,7 +152,7 @@ export default function MembersPage() {
                 <Card className="border-border/40 bg-card/50">
                     <CardContent className="p-4 flex items-center gap-3">
                         <div className="rounded-xl bg-emerald-500/10 p-2.5">
-                            <Users className="h-5 w-5 text-emerald-400" />
+                            <Users className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold">{memberCount}</p>
@@ -264,7 +264,7 @@ export default function MembersPage() {
                                             <Badge
                                                 variant="outline"
                                                 className={`text-[10px] ${m.role?.roleType === "admin"
-                                                    ? "bg-violet-500/10 text-violet-400 border-violet-500/20"
+                                                    ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20"
                                                     : "bg-muted text-muted-foreground"
                                                     }`}
                                             >
@@ -289,7 +289,7 @@ export default function MembersPage() {
                                                             <Button
                                                                 size="sm"
                                                                 variant="ghost"
-                                                                className="h-7 text-xs text-violet-400 hover:text-violet-300 hover:bg-violet-500/10"
+                                                                className="h-7 text-xs text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:text-violet-300 hover:bg-violet-500/10"
                                                             >
                                                                 <UserCog className="h-3 w-3 mr-1" /> Role
                                                             </Button>
@@ -298,7 +298,7 @@ export default function MembersPage() {
                                                             <Button
                                                                 size="sm"
                                                                 variant="ghost"
-                                                                className="h-7 text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                                                                className="h-7 text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:text-red-300 hover:bg-red-500/10"
                                                             >
                                                                 <UserMinus className="h-3 w-3 mr-1" /> Remove
                                                             </Button>

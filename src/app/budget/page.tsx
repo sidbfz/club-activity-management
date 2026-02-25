@@ -39,15 +39,15 @@ import { useAuth } from "@/lib/auth-context";
 
 const statusConfig: Record<string, { color: string; icon: React.ElementType }> = {
     approved: {
-        color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+        color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20",
         icon: CheckCircle2,
     },
     pending: {
-        color: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+        color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20",
         icon: Clock,
     },
     rejected: {
-        color: "bg-red-500/10 text-red-400 border-red-500/20",
+        color: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30 dark:border-red-500/20",
         icon: XCircle,
     },
 };
@@ -67,7 +67,7 @@ export default function BudgetPage() {
                 <Card className="max-w-md border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-8 text-center space-y-4">
                         <div className="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-red-600/20 to-rose-600/20 flex items-center justify-center">
-                            <Lock className="h-8 w-8 text-red-400" />
+                            <Lock className="h-8 w-8 text-red-600 dark:text-red-400" />
                         </div>
                         <h2 className="text-xl font-bold">Access Restricted</h2>
                         <p className="text-sm text-muted-foreground">
@@ -123,7 +123,7 @@ export default function BudgetPage() {
             value: `₹${totalApproved.toLocaleString()}`,
             icon: CheckCircle2,
             gradient: "from-emerald-600/20 to-teal-600/20",
-            iconColor: "text-emerald-400",
+            iconColor: "text-emerald-600 dark:text-emerald-400",
             count: scopedBudgets.filter((b) => b.status === "approved").length,
         },
         {
@@ -131,7 +131,7 @@ export default function BudgetPage() {
             value: `₹${totalPending.toLocaleString()}`,
             icon: Clock,
             gradient: "from-amber-600/20 to-orange-600/20",
-            iconColor: "text-amber-400",
+            iconColor: "text-amber-600 dark:text-amber-400",
             count: scopedBudgets.filter((b) => b.status === "pending").length,
         },
         {
@@ -139,7 +139,7 @@ export default function BudgetPage() {
             value: `₹${totalRejected.toLocaleString()}`,
             icon: XCircle,
             gradient: "from-red-600/20 to-rose-600/20",
-            iconColor: "text-red-400",
+            iconColor: "text-red-600 dark:text-red-400",
             count: scopedBudgets.filter((b) => b.status === "rejected").length,
         },
         {
@@ -147,7 +147,7 @@ export default function BudgetPage() {
             value: `₹${(totalApproved + totalPending + totalRejected).toLocaleString()}`,
             icon: TrendingUp,
             gradient: "from-violet-600/20 to-indigo-600/20",
-            iconColor: "text-violet-400",
+            iconColor: "text-violet-600 dark:text-violet-400",
             count: scopedBudgets.length,
         },
     ];
@@ -323,7 +323,7 @@ export default function BudgetPage() {
                                                         <Button
                                                             size="sm"
                                                             variant="ghost"
-                                                            className="h-7 text-xs text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10"
+                                                            className="h-7 text-xs text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10"
                                                             onClick={() => store.approveBudget(b.budgetId)}
                                                         >
                                                             Approve
@@ -331,7 +331,7 @@ export default function BudgetPage() {
                                                         <Button
                                                             size="sm"
                                                             variant="ghost"
-                                                            className="h-7 text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                                                            className="h-7 text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:text-red-300 hover:bg-red-500/10"
                                                             onClick={() => store.rejectBudget(b.budgetId)}
                                                         >
                                                             Reject

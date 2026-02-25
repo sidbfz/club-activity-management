@@ -56,7 +56,7 @@ export default function DashboardPage() {
         <Card className="max-w-md border-border/40 bg-card/50 backdrop-blur-sm">
           <CardContent className="p-8 text-center space-y-4">
             <div className="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-violet-600/20 to-indigo-600/20 flex items-center justify-center">
-              <ShieldAlert className="h-8 w-8 text-violet-400" />
+              <ShieldAlert className="h-8 w-8 text-violet-600 dark:text-violet-400" />
             </div>
             <h2 className="text-xl font-bold">Welcome, {currentUser!.student.name}!</h2>
             <p className="text-sm text-muted-foreground">
@@ -67,13 +67,13 @@ export default function DashboardPage() {
             <div className="flex gap-3 justify-center pt-2">
               <Link
                 href="/clubs"
-                className="text-sm text-violet-400 hover:text-violet-300 flex items-center gap-1"
+                className="text-sm text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:text-violet-300 flex items-center gap-1"
               >
                 Browse Clubs <ArrowUpRight className="h-3 w-3" />
               </Link>
               <Link
                 href="/events"
-                className="text-sm text-violet-400 hover:text-violet-300 flex items-center gap-1"
+                className="text-sm text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:text-violet-300 flex items-center gap-1"
               >
                 View Events <ArrowUpRight className="h-3 w-3" />
               </Link>
@@ -121,7 +121,7 @@ export default function DashboardPage() {
         value: stats.totalClubs,
         icon: Building2,
         gradient: "from-violet-600/20 to-indigo-600/20",
-        iconColor: "text-violet-400",
+        iconColor: "text-violet-600 dark:text-violet-400",
         change: "+2 this semester",
       },
       {
@@ -129,7 +129,7 @@ export default function DashboardPage() {
         value: stats.totalStudents,
         icon: GraduationCap,
         gradient: "from-emerald-600/20 to-teal-600/20",
-        iconColor: "text-emerald-400",
+        iconColor: "text-emerald-600 dark:text-emerald-400",
         change: "+5 this month",
       }
     );
@@ -141,7 +141,7 @@ export default function DashboardPage() {
       value: scopedMembers.length,
       icon: Users,
       gradient: "from-sky-600/20 to-blue-600/20",
-      iconColor: "text-sky-400",
+      iconColor: "text-sky-600 dark:text-sky-400",
       change: activeClub!.clubName,
     });
   }
@@ -151,7 +151,7 @@ export default function DashboardPage() {
     value: isClubScoped ? scopedEvents.length : stats.totalEvents,
     icon: CalendarDays,
     gradient: "from-amber-600/20 to-orange-600/20",
-    iconColor: "text-amber-400",
+    iconColor: "text-amber-600 dark:text-amber-400",
     change: `${scopedEvents.filter((e) => e.status === "upcoming").length
       } upcoming`,
   });
@@ -173,7 +173,7 @@ export default function DashboardPage() {
       value: `₹${(approvedTotal / 1000).toFixed(0)}K`,
       icon: Wallet,
       gradient: "from-pink-600/20 to-rose-600/20",
-      iconColor: "text-pink-400",
+      iconColor: "text-pink-600 dark:text-pink-400",
       change: `₹${(pendingTotal / 1000).toFixed(0)}K pending`,
     });
   }
@@ -184,7 +184,7 @@ export default function DashboardPage() {
       value: stats.totalRegistrations,
       icon: TrendingUp,
       gradient: "from-purple-600/20 to-fuchsia-600/20",
-      iconColor: "text-purple-400",
+      iconColor: "text-purple-600 dark:text-purple-400",
       change: "Across all events",
     });
   }
@@ -424,7 +424,7 @@ export default function DashboardPage() {
               </div>
               <Link
                 href="/events"
-                className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1 transition-colors"
+                className="text-xs text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:text-violet-300 flex items-center gap-1 transition-colors"
               >
                 View all <ArrowUpRight className="h-3 w-3" />
               </Link>
@@ -448,7 +448,7 @@ export default function DashboardPage() {
                     className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/30 transition-colors"
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600/20 to-indigo-600/20">
-                      <CalendarDays className="h-4 w-4 text-violet-400" />
+                      <CalendarDays className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                     </div>
                     <div className="flex-1 min-w-0 space-y-1">
                       <p className="text-sm font-medium truncate">

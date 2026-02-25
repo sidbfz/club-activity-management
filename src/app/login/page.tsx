@@ -292,7 +292,7 @@ export default function LoginPage() {
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center gap-2">
-                                                        <span className="text-sm font-medium group-hover:text-violet-400 transition-colors">
+                                                        <span className="text-sm font-medium group-hover:text-violet-600 dark:text-violet-400 transition-colors">
                                                             {info.shortLabel}
                                                         </span>
                                                         <Badge
@@ -376,7 +376,7 @@ export default function LoginPage() {
                                     </div>
 
                                     <div className="flex items-start gap-2 text-xs text-muted-foreground">
-                                        <Check className="h-3.5 w-3.5 text-violet-400 shrink-0 mt-0.5" />
+                                        <Check className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
                                         <p>
                                             By signing up, you agree to our Terms of Service and
                                             Privacy Policy.
@@ -394,7 +394,7 @@ export default function LoginPage() {
 
                                 <p className="text-center text-[11px] text-muted-foreground">
                                     New accounts are created with{" "}
-                                    <span className="font-medium text-purple-400">Student</span>{" "}
+                                    <span className="font-medium text-purple-600 dark:text-purple-400">Student</span>{" "}
                                     role by default.
                                     <br />
                                     Club leaders can assign roles after you join a club.

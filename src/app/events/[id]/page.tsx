@@ -50,13 +50,13 @@ import Link from "next/link";
 
 const statusConfig: Record<string, { color: string; bgColor: string; label: string }> = {
     upcoming: {
-        color: "text-emerald-400",
-        bgColor: "bg-emerald-500/10 border-emerald-500/20",
+        color: "text-emerald-600 dark:text-emerald-400",
+        bgColor: "bg-emerald-500/10 border-emerald-500/30 dark:border-emerald-500/20",
         label: "Upcoming",
     },
     ongoing: {
-        color: "text-amber-400",
-        bgColor: "bg-amber-500/10 border-amber-500/20",
+        color: "text-amber-600 dark:text-amber-400",
+        bgColor: "bg-amber-500/10 border-amber-500/30 dark:border-amber-500/20",
         label: "Ongoing",
     },
     completed: {
@@ -185,8 +185,8 @@ export default function EventDetailPage() {
                 <div className="fixed top-20 right-6 z-50 animate-fade-in-up">
                     <div
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg backdrop-blur-xl ${toast.type === "success"
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                            : "bg-sky-500/10 border-sky-500/30 text-sky-400"
+                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+                            : "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400"
                             }`}
                     >
                         <CheckCircle2 className="h-4 w-4 shrink-0" />
@@ -216,7 +216,7 @@ export default function EventDetailPage() {
                             {status.label}
                         </Badge>
                         {isRegistered && (
-                            <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[10px]">
+                            <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20 text-[10px]">
                                 <CheckCircle2 className="h-3 w-3 mr-1" /> You&apos;re Registered
                             </Badge>
                         )}
@@ -232,10 +232,10 @@ export default function EventDetailPage() {
                             >
                                 {club.clubName.charAt(0)}
                             </div>
-                            <span className="text-sm text-muted-foreground group-hover:text-violet-400 transition-colors">
+                            <span className="text-sm text-muted-foreground group-hover:text-violet-600 dark:text-violet-400 transition-colors">
                                 {club.clubName}
                             </span>
-                            <Building2 className="h-3 w-3 text-muted-foreground group-hover:text-violet-400 transition-colors" />
+                            <Building2 className="h-3 w-3 text-muted-foreground group-hover:text-violet-600 dark:text-violet-400 transition-colors" />
                         </Link>
                     )}
                 </div>
@@ -358,7 +358,7 @@ export default function EventDetailPage() {
                         <Button
                             size="sm"
                             variant="outline"
-                            className="text-xs gap-1.5 text-red-400 border-red-500/20 hover:bg-red-500/10"
+                            className="text-xs gap-1.5 text-red-600 dark:text-red-400 border-red-500/30 dark:border-red-500/20 hover:bg-red-500/10"
                             onClick={handleDelete}
                         >
                             <Trash2 className="h-3 w-3" /> Delete
@@ -369,7 +369,7 @@ export default function EventDetailPage() {
                             <Button
                                 size="sm"
                                 variant="outline"
-                                className="text-xs gap-1.5 text-red-400 border-red-500/30 hover:bg-red-500/10"
+                                className="text-xs gap-1.5 text-red-600 dark:text-red-400 border-red-500/30 hover:bg-red-500/10"
                                 onClick={handleUnregister}
                             >
                                 <UserMinus className="h-3 w-3" /> Unregister
@@ -400,7 +400,7 @@ export default function EventDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 space-y-1.5">
                         <div className="flex items-center gap-2 text-muted-foreground">
-                            <CalendarDays className="h-4 w-4 text-violet-400" />
+                            <CalendarDays className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             <span className="text-[11px] font-medium uppercase tracking-wider">Date</span>
                         </div>
                         <p className="text-sm font-semibold">
@@ -417,7 +417,7 @@ export default function EventDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 space-y-1.5">
                         <div className="flex items-center gap-2 text-muted-foreground">
-                            <Clock className="h-4 w-4 text-violet-400" />
+                            <Clock className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             <span className="text-[11px] font-medium uppercase tracking-wider">Time</span>
                         </div>
                         <p className="text-sm font-semibold">
@@ -433,7 +433,7 @@ export default function EventDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 space-y-1.5">
                         <div className="flex items-center gap-2 text-muted-foreground">
-                            <MapPin className="h-4 w-4 text-violet-400" />
+                            <MapPin className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             <span className="text-[11px] font-medium uppercase tracking-wider">Venue</span>
                         </div>
                         <p className="text-sm font-semibold">{event.venue}</p>
@@ -443,7 +443,7 @@ export default function EventDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-4 space-y-1.5">
                         <div className="flex items-center gap-2 text-muted-foreground">
-                            <Users className="h-4 w-4 text-violet-400" />
+                            <Users className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             <span className="text-[11px] font-medium uppercase tracking-wider">Capacity</span>
                         </div>
                         <p className="text-sm font-semibold">
@@ -458,7 +458,7 @@ export default function EventDetailPage() {
                 <CardContent className="p-5 space-y-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <Ticket className="h-4 w-4 text-violet-400" />
+                            <Ticket className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             <span className="text-sm font-medium">Registration Progress</span>
                         </div>
                         <span className="text-sm font-bold">
@@ -471,7 +471,7 @@ export default function EventDetailPage() {
                         <span>{event.maxParticipants - regCount} spots remaining</span>
                     </div>
                     {isFull && (
-                        <div className="flex items-center gap-2 text-amber-400 text-xs">
+                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs">
                             <AlertCircle className="h-3.5 w-3.5" />
                             This event is at full capacity
                         </div>
@@ -484,7 +484,7 @@ export default function EventDetailPage() {
                 <Card className="border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-5 space-y-4">
                         <h3 className="text-sm font-semibold flex items-center gap-2">
-                            <Users className="h-4 w-4 text-violet-400" />
+                            <Users className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                             Registered Students ({registrations.length})
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -543,7 +543,7 @@ export default function EventDetailPage() {
                 <CardContent className="p-5 space-y-4">
                     <div className="flex items-center justify-between">
                         <h3 className="text-sm font-semibold flex items-center gap-2">
-                            <Shield className="h-4 w-4 text-amber-400" />
+                            <Shield className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                             Event Coordinators ({coordinators.length})
                         </h3>
                         {canManageCoordinators && (
@@ -624,7 +624,7 @@ export default function EventDetailPage() {
                                     <Button
                                         size="sm"
                                         variant="ghost"
-                                        className="h-7 w-7 p-0 text-muted-foreground hover:text-red-400"
+                                        className="h-7 w-7 p-0 text-muted-foreground hover:text-red-600 dark:text-red-400"
                                         onClick={() => {
                                             store.removeEventCoordinator(ec.id);
                                             showToast(`${ec.student?.name} removed as coordinator`, "info");

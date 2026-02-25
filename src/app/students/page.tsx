@@ -51,7 +51,7 @@ export default function StudentsPage() {
                 <Card className="max-w-md border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-8 text-center space-y-4">
                         <div className="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-red-600/20 to-rose-600/20 flex items-center justify-center">
-                            <Lock className="h-8 w-8 text-red-400" />
+                            <Lock className="h-8 w-8 text-red-600 dark:text-red-400" />
                         </div>
                         <h2 className="text-xl font-bold">Access Restricted</h2>
                         <p className="text-sm text-muted-foreground">
@@ -164,7 +164,7 @@ export default function StudentsPage() {
                                                 </AvatarFallback>
                                             </Avatar>
                                             <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-semibold truncate group-hover:text-violet-400 transition-colors">
+                                                <p className="text-sm font-semibold truncate group-hover:text-violet-600 dark:text-violet-400 transition-colors">
                                                     {student.name}
                                                 </p>
                                                 <p className="text-[11px] text-muted-foreground font-mono">
@@ -174,18 +174,18 @@ export default function StudentsPage() {
                                         </div>
                                         <div className="space-y-2 text-xs text-muted-foreground">
                                             <div className="flex items-center gap-2">
-                                                <GraduationCap className="h-3.5 w-3.5 text-violet-400" />
+                                                <GraduationCap className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
                                                 {student.department} • Year {student.year}
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Mail className="h-3.5 w-3.5 text-violet-400" />
+                                                <Mail className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
                                                 <span className="truncate">{student.email}</span>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-2 pt-1">
                                             <Badge
                                                 variant="outline"
-                                                className="text-[10px] bg-violet-500/10 text-violet-400 border-violet-500/20"
+                                                className="text-[10px] bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20"
                                             >
                                                 {clubCount} club{clubCount !== 1 ? "s" : ""}
                                             </Badge>
@@ -276,7 +276,7 @@ export default function StudentsPage() {
                                                         <Badge
                                                             variant="outline"
                                                             className={`text-[10px] ${mc.role?.roleType === "admin"
-                                                                ? "bg-violet-500/10 text-violet-400 border-violet-500/20"
+                                                                ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20"
                                                                 : ""
                                                                 }`}
                                                         >
@@ -298,7 +298,7 @@ export default function StudentsPage() {
                                                         className="flex items-center gap-3 p-3 rounded-lg bg-muted/20"
                                                     >
                                                         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/10">
-                                                            <CalendarDays className="h-4 w-4 text-violet-400" />
+                                                            <CalendarDays className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <p className="text-sm font-medium">
@@ -319,7 +319,7 @@ export default function StudentsPage() {
                                                         <Badge
                                                             variant="outline"
                                                             className={`text-[10px] capitalize ${r.event?.status === "upcoming"
-                                                                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                                                                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20"
                                                                 : "bg-muted text-muted-foreground"
                                                                 }`}
                                                         >

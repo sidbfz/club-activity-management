@@ -146,7 +146,7 @@ function AppSidebarContent() {
                                         >
                                             <Link href={item.href}>
                                                 <Icon
-                                                    className={`h-4 w-4 ${isActive ? "text-violet-400" : ""
+                                                    className={`h-4 w-4 ${isActive ? "text-violet-600 dark:text-violet-400" : ""
                                                         }`}
                                                 />
                                                 <span>{item.label}</span>
@@ -270,7 +270,7 @@ function UserMenu() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                     onClick={logout}
-                    className="text-xs text-red-400 hover:text-red-300 focus:text-red-300 cursor-pointer"
+                    className="text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:text-red-300 focus:text-red-700 dark:text-red-300 cursor-pointer"
                 >
                     <LogOut className="h-3.5 w-3.5 mr-2" />
                     Sign Out

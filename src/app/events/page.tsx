@@ -40,8 +40,8 @@ import {
 } from "@/components/ui/select";
 
 const statusColors: Record<string, string> = {
-    upcoming: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    ongoing: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    upcoming: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20",
+    ongoing: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20",
     completed: "bg-muted text-muted-foreground border-border/40",
 };
 
@@ -274,19 +274,19 @@ export default function EventsPage() {
                                     <div className="flex items-start justify-between">
                                         <div className="space-y-1.5 flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <h3 className="font-semibold text-sm group-hover:text-violet-400 transition-colors truncate">
+                                                <h3 className="font-semibold text-sm group-hover:text-violet-600 dark:text-violet-400 transition-colors truncate">
                                                     {event.eventName}
                                                 </h3>
                                                 <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 {isOwn && (
-                                                    <Badge className="bg-violet-500/10 text-violet-400 border-violet-500/20 text-[9px] shrink-0">
+                                                    <Badge className="bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20 text-[9px] shrink-0">
                                                         Your Club
                                                     </Badge>
                                                 )}
                                                 {isRegistered && (
-                                                    <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-[9px] shrink-0">
+                                                    <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20 text-[9px] shrink-0">
                                                         <CheckCircle2 className="h-2.5 w-2.5 mr-0.5" />
                                                         Registered
                                                     </Badge>
@@ -313,7 +313,7 @@ export default function EventsPage() {
 
                                     <div className="space-y-2 text-xs text-muted-foreground">
                                         <div className="flex items-center gap-2">
-                                            <CalendarDays className="h-3.5 w-3.5 text-violet-400" />
+                                            <CalendarDays className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
                                             {new Date(event.eventDate).toLocaleDateString("en-IN", {
                                                 weekday: "short",
                                                 day: "numeric",
@@ -322,14 +322,14 @@ export default function EventsPage() {
                                             })}
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <Clock className="h-3.5 w-3.5 text-violet-400" />
+                                            <Clock className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
                                             {new Date(event.eventDate).toLocaleTimeString("en-IN", {
                                                 hour: "2-digit",
                                                 minute: "2-digit",
                                             })}
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <MapPin className="h-3.5 w-3.5 text-violet-400" />
+                                            <MapPin className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
                                             {event.venue}
                                         </div>
                                     </div>

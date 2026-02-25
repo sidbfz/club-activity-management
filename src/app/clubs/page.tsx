@@ -36,12 +36,12 @@ import {
 } from "@/components/ui/select";
 
 const categoryColors: Record<string, string> = {
-    Technology: "bg-violet-500/10 text-violet-400 border-violet-500/20",
-    Design: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-    Environment: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    Music: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-    Sports: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-    Literature: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    Technology: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/30 dark:border-violet-500/20",
+    Design: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/30 dark:border-pink-500/20",
+    Environment: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20",
+    Music: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20",
+    Sports: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30 dark:border-sky-500/20",
+    Literature: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30 dark:border-purple-500/20",
     Photography: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
 };
 
@@ -343,7 +343,7 @@ export default function ClubsPage() {
                                     <div className="p-4 space-y-3">
                                         <div>
                                             <div className="flex items-center justify-between">
-                                                <h3 className="font-semibold text-sm group-hover:text-violet-400 transition-colors">
+                                                <h3 className="font-semibold text-sm group-hover:text-violet-600 dark:text-violet-400 transition-colors">
                                                     {club.clubName}
                                                 </h3>
                                                 <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />

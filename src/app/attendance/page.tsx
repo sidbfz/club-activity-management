@@ -41,15 +41,15 @@ import { useAuth } from "@/lib/auth-context";
 
 const statusBadge: Record<string, { color: string; icon: React.ElementType }> = {
     present: {
-        color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+        color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 dark:border-emerald-500/20",
         icon: CheckCircle2,
     },
     absent: {
-        color: "bg-red-500/10 text-red-400 border-red-500/20",
+        color: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30 dark:border-red-500/20",
         icon: XCircle,
     },
     late: {
-        color: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+        color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30 dark:border-amber-500/20",
         icon: AlertTriangle,
     },
 };
@@ -72,7 +72,7 @@ export default function AttendancePage() {
                 <Card className="max-w-md border-border/40 bg-card/50 backdrop-blur-sm">
                     <CardContent className="p-8 text-center space-y-4">
                         <div className="h-16 w-16 mx-auto rounded-2xl bg-gradient-to-br from-red-600/20 to-rose-600/20 flex items-center justify-center">
-                            <Lock className="h-8 w-8 text-red-400" />
+                            <Lock className="h-8 w-8 text-red-600 dark:text-red-400" />
                         </div>
                         <h2 className="text-xl font-bold">Access Restricted</h2>
                         <p className="text-sm text-muted-foreground">
@@ -128,28 +128,28 @@ export default function AttendancePage() {
             value: scopedData.length,
             icon: ClipboardCheck,
             gradient: "from-violet-600/20 to-indigo-600/20",
-            iconColor: "text-violet-400",
+            iconColor: "text-violet-600 dark:text-violet-400",
         },
         {
             title: "Present",
             value: presentCount,
             icon: UserCheck,
             gradient: "from-emerald-600/20 to-teal-600/20",
-            iconColor: "text-emerald-400",
+            iconColor: "text-emerald-600 dark:text-emerald-400",
         },
         {
             title: "Late",
             value: lateCount,
             icon: Clock,
             gradient: "from-amber-600/20 to-orange-600/20",
-            iconColor: "text-amber-400",
+            iconColor: "text-amber-600 dark:text-amber-400",
         },
         {
             title: "Absent",
             value: absentCount,
             icon: UserX,
             gradient: "from-red-600/20 to-rose-600/20",
-            iconColor: "text-red-400",
+            iconColor: "text-red-600 dark:text-red-400",
         },
     ];
 
@@ -324,7 +324,7 @@ export default function AttendancePage() {
                                                     <Button
                                                         size="sm"
                                                         variant="ghost"
-                                                        className="h-7 text-xs text-violet-400 hover:text-violet-300 hover:bg-violet-500/10"
+                                                        className="h-7 text-xs text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:text-violet-300 hover:bg-violet-500/10"
                                                     >
                                                         Edit
                                                     </Button>

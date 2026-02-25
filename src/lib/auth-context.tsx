@@ -33,7 +33,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Admin",
         description:
             "Full system access — manage all clubs, events, budgets, users, and settings",
-        color: "text-yellow-400",
+        color: "text-yellow-600 dark:text-yellow-400",
         gradientBg: "from-yellow-500 to-amber-600",
     },
     {
@@ -42,7 +42,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "President",
         description:
             "Full club access — manage events, members, budgets, attendance, and club profile",
-        color: "text-red-400",
+        color: "text-red-600 dark:text-red-400",
         gradientBg: "from-red-600 to-rose-600",
     },
     {
@@ -51,7 +51,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Vice President",
         description:
             "Deputy leader — manage events, members, attendance, and assist president",
-        color: "text-violet-400",
+        color: "text-violet-600 dark:text-violet-400",
         gradientBg: "from-violet-600 to-indigo-600",
     },
     {
@@ -60,7 +60,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Secretary",
         description:
             "Administrative support — manage registrations, attendance, announcements",
-        color: "text-sky-400",
+        color: "text-sky-600 dark:text-sky-400",
         gradientBg: "from-sky-500 to-blue-600",
     },
     {
@@ -69,7 +69,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Treasurer",
         description:
             "Financial management — request budgets, track expenses, view reports",
-        color: "text-amber-400",
+        color: "text-amber-600 dark:text-amber-400",
         gradientBg: "from-amber-500 to-orange-600",
     },
     {
@@ -78,7 +78,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Coordinator",
         description:
             "Event management — create events, mark attendance, view registrations",
-        color: "text-emerald-400",
+        color: "text-emerald-600 dark:text-emerald-400",
         gradientBg: "from-emerald-600 to-teal-600",
     },
     {
@@ -87,7 +87,7 @@ export const APP_ROLES: RoleInfo[] = [
         shortLabel: "Student",
         description:
             "Browse clubs, join any club, register for events, view attendance",
-        color: "text-purple-400",
+        color: "text-purple-600 dark:text-purple-400",
         gradientBg: "from-purple-500 to-fuchsia-600",
     },
 ];
