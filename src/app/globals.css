@@ -137,11 +137,19 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0 0);
+  background: oklch(0.8 0 0);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.7 0 0);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0 0);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.5 0 0);
 }
 
@@ -157,7 +165,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, oklch(0.7 0.2 270 / 40%), transparent, oklch(0.7 0.2 300 / 40%));
+  background: linear-gradient(135deg, oklch(0.6 0.2 270 / 20%), transparent, oklch(0.6 0.2 300 / 20%));
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   opacity: 0;
@@ -171,7 +179,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, oklch(0.7 0.2 270), oklch(0.75 0.2 300));
+  background: linear-gradient(135deg, oklch(0.5 0.2 270), oklch(0.55 0.2 300));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -186,7 +194,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
 }
@@ -219,9 +227,9 @@
 
 .shimmer {
   background: linear-gradient(90deg,
-      oklch(0.3 0 0) 0%,
-      oklch(0.4 0.02 270) 50%,
-      oklch(0.3 0 0) 100%);
+      oklch(0.95 0 0) 0%,
+      oklch(0.9 0.02 270) 50%,
+      oklch(0.95 0 0) 100%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }

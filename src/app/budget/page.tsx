@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useDataStore } from "@/lib/data-store";
+import { supabase } from "@/lib/supabase";
 import {
     Card,
     CardContent,
@@ -24,6 +25,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import {
+    Dialog,
+    DialogContent,
+    DialogTrigger,
+    DialogTitle,
+    DialogHeader,
+} from "@/components/ui/dialog";
 import {
     Search,
     Wallet,
@@ -98,6 +106,7 @@ export default function BudgetPage() {
 
     const filtered = enriched.filter((b) => {
         const matchesSearch =
+            b.subject?.toLowerCase().includes(search.toLowerCase()) ||
             b.description?.toLowerCase().includes(search.toLowerCase()) ||
             b.club?.clubName.toLowerCase().includes(search.toLowerCase());
         const matchesStatus =
@@ -152,6 +161,59 @@ export default function BudgetPage() {
         },
     ];
 
+    const [selectedDescription, setSelectedDescription] = useState<string | null>(null);
+    const [showRequestDialog, setShowRequestDialog] = useState(false);
+    const [newRequest, setNewRequest] = useState({ subject: "", description: "", amount: "", attachments: [] as File[] });
+    const [isUploading, setIsUploading] = useState(false);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setNewRequest({ ...newRequest, attachments: Array.from(e.target.files) });
+        }
+    };
+
+    const handleCreateRequest = async () => {
+        if (!newRequest.subject || !newRequest.description || !newRequest.amount || !activeClub) return;
+
+        setIsUploading(true);
+        const attachmentUrls: string[] = [];
+
+        // Handle file uploads to Supabase storage
+        for (const file of newRequest.attachments) {
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${Math.random()}.${fileExt}`;
+            const filePath = `${activeClub.clubId}/${fileName}`;
+
+            // Assume we have a 'budget-attachments' bucket in supersbase
+            const { error: uploadError } = await supabase.storage
+                .from('budget-attachments')
+                .upload(filePath, file);
+
+            if (!uploadError) {
+                const { data } = supabase.storage
+                    .from('budget-attachments')
+                    .getPublicUrl(filePath);
+                if (data?.publicUrl) {
+                    attachmentUrls.push(data.publicUrl);
+                }
+            }
+        }
+
+        store.requestBudget({
+            clubId: activeClub.clubId,
+            subject: newRequest.subject,
+            description: newRequest.description,
+            amount: Number(newRequest.amount),
+            attachmentUrls: attachmentUrls.length > 0 ? attachmentUrls : undefined,
+            status: "pending",
+            requestDate: new Date().toISOString().split("T")[0],
+        });
+
+        setIsUploading(false);
+        setShowRequestDialog(false);
+        setNewRequest({ subject: "", description: "", amount: "", attachments: [] });
+    };
+
     return (
         <div className="space-y-8 animate-fade-in-up">
             {/* Header */}
@@ -172,10 +234,73 @@ export default function BudgetPage() {
                     </p>
                 </div>
                 {canRequest && (
-                    <Button className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-violet-600/20">
-                        <Plus className="h-4 w-4 mr-2" />
-                        New Request
-                    </Button>
+                    <Dialog open={showRequestDialog} onOpenChange={setShowRequestDialog}>
+                        <DialogTrigger asChild>
+                            <Button className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-violet-600/20">
+                                <Plus className="h-4 w-4 mr-2" />
+                                New Request
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-md bg-card border-border/40">
+                            <div>
+                                <DialogHeader>
+                                    <DialogTitle className="text-lg font-semibold mb-1">Request Budget</DialogTitle>
+                                </DialogHeader>
+                                <p className="text-sm text-muted-foreground mb-4 mt-1">Request a budget for {activeClub?.clubName}</p>
+                                <div className="space-y-4">
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-medium">Subject *</label>
+                                        <Input
+                                            placeholder="e.g. Funding request"
+                                            value={newRequest.subject}
+                                            onChange={(e) => setNewRequest({ ...newRequest, subject: e.target.value })}
+                                            className="bg-muted/20 border-border/40"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-medium">Description *</label>
+                                        <Input
+                                            placeholder="e.g. Workshop Equipment"
+                                            value={newRequest.description}
+                                            onChange={(e) => setNewRequest({ ...newRequest, description: e.target.value })}
+                                            className="bg-muted/20 border-border/40"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-medium">Amount (₹) *</label>
+                                        <Input
+                                            type="number"
+                                            placeholder="e.g. 5000"
+                                            value={newRequest.amount}
+                                            onChange={(e) => setNewRequest({ ...newRequest, amount: e.target.value })}
+                                            className="bg-muted/20 border-border/40"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-medium">Attachments (Optional)</label>
+                                        <Input
+                                            type="file"
+                                            multiple
+                                            onChange={handleFileChange}
+                                            className="bg-muted/20 border-border/40 file:text-foreground file:bg-muted file:border-0 file:mr-4 file:py-1 file:px-3 file:rounded-md hover:file:bg-muted/80 cursor-pointer"
+                                        />
+                                        {newRequest.attachments.length > 0 && (
+                                            <p className="text-xs text-muted-foreground mt-1">
+                                                {newRequest.attachments.length} file(s) selected
+                                            </p>
+                                        )}
+                                    </div>
+                                    <Button
+                                        onClick={handleCreateRequest}
+                                        disabled={!newRequest.subject || !newRequest.description || !newRequest.amount || isUploading}
+                                        className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+                                    >
+                                        {isUploading ? "Uploading & Submitting..." : "Submit Request"}
+                                    </Button>
+                                </div>
+                            </div>
+                        </DialogContent>
+                    </Dialog>
                 )}
             </div>
 
@@ -257,7 +382,7 @@ export default function BudgetPage() {
                         <TableHeader>
                             <TableRow className="border-border/40 hover:bg-transparent">
                                 <TableHead className="text-xs">ID</TableHead>
-                                <TableHead className="text-xs">Description</TableHead>
+                                <TableHead className="text-xs">Details</TableHead>
                                 <TableHead className="text-xs">Club</TableHead>
                                 <TableHead className="text-xs">Amount</TableHead>
                                 <TableHead className="text-xs">Requested On</TableHead>
@@ -279,8 +404,28 @@ export default function BudgetPage() {
                                         <TableCell className="text-sm font-mono text-muted-foreground">
                                             #{b.budgetId}
                                         </TableCell>
-                                        <TableCell className="text-sm font-medium">
-                                            {b.description}
+                                        <TableCell>
+                                            <div className="flex flex-col gap-0.5 max-w-[200px] sm:max-w-xs xl:max-w-sm">
+                                                <span className="text-sm font-medium line-clamp-1" title={b.subject}>
+                                                    {b.subject || "No Subject"}
+                                                </span>
+                                                <span
+                                                    className="text-xs text-muted-foreground line-clamp-1 cursor-pointer hover:underline"
+                                                    title="Click to view full description"
+                                                    onClick={() => setSelectedDescription(b.description || "No description provided.")}
+                                                >
+                                                    {b.description || "View Description"}
+                                                </span>
+                                                {b.attachmentUrls && b.attachmentUrls.length > 0 && (
+                                                    <div className="flex flex-col gap-1 mt-1">
+                                                        {b.attachmentUrls.map((url, i) => (
+                                                            <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-500 hover:underline truncate max-w-full inline-block">
+                                                                Attachment {i + 1}
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
                                         </TableCell>
                                         <TableCell>
                                             <div className="flex items-center gap-2">
@@ -352,6 +497,20 @@ export default function BudgetPage() {
                     )}
                 </CardContent>
             </Card>
+
+            {/* Description Dialog */}
+            <Dialog open={selectedDescription !== null} onOpenChange={(open) => {
+                if (!open) setSelectedDescription(null);
+            }}>
+                <DialogContent className="max-w-md bg-card border-border/40">
+                    <DialogHeader>
+                        <DialogTitle className="text-lg font-semibold mb-1">Budget Request Description</DialogTitle>
+                    </DialogHeader>
+                    <div className="mt-4 p-4 rounded-md bg-muted/20 border border-border/40 text-sm whitespace-pre-wrap max-h-[60vh] overflow-y-auto">
+                        {selectedDescription}
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

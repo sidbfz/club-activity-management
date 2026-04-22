@@ -1,8 +1,10 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { students, getClubById } from "./mock-data";
 import type { Student, Club } from "./mock-data";
+
+const AUTH_STORAGE_KEY = "clubsync.currentUser";
 
 // ==================== ROLE TYPES ====================
 // Everyone is a Student. Admin is the only system-level role.
@@ -154,7 +156,7 @@ const ROLE_PERMISSIONS: Record<AppRole, Permission[]> = {
         "event_create", "event_edit", "event_delete", "event_view_registrations", "event_view_analytics",
         "member_add", "member_remove", "member_change_role", "member_view_records",
         "attendance_mark_others", "attendance_mark_self", "attendance_view",
-        "budget_request", "budget_view_history", "budget_track_expenses", "budget_view_analytics",
+        "budget_view_history", "budget_track_expenses", "budget_view_analytics",
         "announcement_post", "announcement_view",
         "registration_manage", "registration_self_register",
         "dashboard_view", "dashboard_full_analytics",
@@ -281,6 +283,7 @@ export const NAV_ITEMS: NavItem[] = [
 interface AuthContextType {
     currentUser: UserProfile | null;
     isAuthenticated: boolean;
+    isInitializing: boolean;
     login: (profile: UserProfile) => void;
     logout: () => void;
     hasPermission: (permission: Permission) => boolean;
@@ -296,15 +299,36 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
+    const [isInitializing, setIsInitializing] = useState(true);
+
+    useEffect(() => {
+        try {
+            const storedValue = window.localStorage.getItem(AUTH_STORAGE_KEY);
+            if (!storedValue) return;
+
+            const parsed = JSON.parse(storedValue) as Partial<UserProfile>;
+            const validRole = APP_ROLES.some((role) => role.id === parsed.role);
+
+            if (parsed.student && parsed.role && validRole) {
+                setCurrentUser(parsed as UserProfile);
+            }
+        } catch {
+            window.localStorage.removeItem(AUTH_STORAGE_KEY);
+        } finally {
+            setIsInitializing(false);
+        }
+    }, []);
 
     const isAuthenticated = currentUser !== null;
 
     const login = useCallback((profile: UserProfile) => {
         setCurrentUser(profile);
+        window.localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(profile));
     }, []);
 
     const logout = useCallback(() => {
         setCurrentUser(null);
+        window.localStorage.removeItem(AUTH_STORAGE_KEY);
     }, []);
 
     const currentRole = currentUser?.role ?? "student";
@@ -361,6 +385,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             value={{
                 currentUser,
                 isAuthenticated,
+                isInitializing,
                 login,
                 logout,
                 hasPermission,

@@ -5,7 +5,11 @@ import AppShell from "@/components/app-shell";
 import LoginPage from "@/app/login/page";
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, isInitializing } = useAuth();
+
+    if (isInitializing) {
+        return null;
+    }
 
     if (!isAuthenticated) {
         return <LoginPage />;

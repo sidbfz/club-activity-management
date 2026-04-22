@@ -44,7 +44,9 @@ export interface Budget {
   clubId: number;
   amount: number;
   status: "pending" | "approved" | "rejected";
+  subject?: string;
   description?: string;
+  attachmentUrls?: string[];
   requestDate?: string;
 }
 
